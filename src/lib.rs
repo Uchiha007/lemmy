@@ -26,6 +26,7 @@ pub fn init_tracing() -> Result<(), LemmyError> {
   let console_layer = ConsoleLayer::builder()
     .with_default_env()
     .server_addr(([0, 0, 0, 0], 6669))
+    .event_buffer_capacity(1024 * 1024)
     .spawn();
 
   let subscriber = Registry::default()
